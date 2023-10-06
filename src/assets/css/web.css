@@ -1,0 +1,19 @@
+.hero-area {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-area .home3-banner {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.banner3-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #FFF; /* White color for text */
+}

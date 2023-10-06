@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Header from '../components/Head';
+import Body from '../components/Body';
 import Footer from '../components/Footer';
 
 function Home() {
@@ -9,6 +10,7 @@ function Home() {
     <div className="home-page">
       {/* Phần nội dung khác của trang chủ */}
       <Header/>
+      <Body/>
       <Footer />
     </div>
   );

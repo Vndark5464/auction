@@ -1,8 +1,8 @@
-// Pages/Login.js
+// Pages/Register.js
 
 import React from 'react';
 
-function Login() {
+function Register() {
 
   const handleSubmit = () => {
     // Submit form
@@ -16,9 +16,9 @@ function Login() {
       <label htmlFor="password">Password:</label>
       <input id="password" name="password" placeholder="Password" type="password" aria-label="Password" />
       
-      <button type="submit">Login</button>  
+      <button type="submit">Register</button>  
     </form>
   );
 }
 
-export default Login;
+export default Register;
