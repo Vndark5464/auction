@@ -12,15 +12,17 @@ function Body() {
                 <div className="col-xl-5 col-lg-5 px-0">
                     <div className="banner3-content">
                         <span className="wow animated">
-                            Chào mừng bạn đến với ABC Auction
+                            <h1>Welcome to ABC Auction</h1>
                         </span>
-                        <h1 className="wow animated">
-                            Nền tảng đấu giá trực tuyến hàng đầu Việt Nam
-                        </h1>
+                        <h3 className="wow animated">
+                        Vietnam's leading online auction platform
+                        </h3>
                         <p className="wow animated">
-                            Tự hào là một trong những nhà đấu giá lớn nhất tại Việt Nam, ABC Auction luôn là đơn vị tiên phong ứng dụng công nghệ thông tin vào hoạt động đấu giá, mở ra 1 chương mới cho hoạt động đấu giá nước nhà.
+                        Proud to be one of the largest auction houses in Vietnam, 
+                         Auction has always been a pioneer in applying information technology to auction activities,
+                          opening a new chapter for the country's auction activities.
                         </p>
-                        <button onClick={goToPage2} className="eg-btn btn--primary3 btn--lg wow fadeInUp" style={{visibility: 'visible', animationDuration: '2s', animationDelay: '0.8s'}} aria-label="Khám phá ABC Auction">khám phá</button>
+                        <button onClick={goToPage2} className="eg-btn btn--primary3 btn--lg wow fadeInUp" style={{visibility: 'visible', animationDuration: '2s', animationDelay: '0.8s'}} aria-label="Khám phá ABC Auction">Discover</button>
                     </div>
                 </div>
             </div>

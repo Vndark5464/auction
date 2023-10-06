@@ -17,3 +17,6 @@
     text-align: center;
     color: #FFF; /* White color for text */
 }
+.blockcode {
+    background-color:antiquewhite;
+}
