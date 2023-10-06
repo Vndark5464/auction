@@ -1,17 +1,15 @@
 // Pages/Home.js
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Header from '../components/Head';
+import Footer from '../components/Footer';
 
 function Home() {
   return (
     <div className="home-page">
-      <h1 id="home-intro" role="heading">Welcome to our auction platform!</h1>
-      <p>Join and bid on amazing products</p>
-      
-      <Link to="/products" className="browse-btn" aria-label="Browse available products">
-        Browse Products
-      </Link>
+      {/* Phần nội dung khác của trang chủ */}
+      <Header/>
+      <Footer />
     </div>
   );
 }
