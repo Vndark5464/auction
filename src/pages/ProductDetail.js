@@ -15,8 +15,8 @@ function ProductDetail({ productId }) {
     <div>
       {product && (
         <>
-          <h1>{product.name}</h1>
-          <img src={product.image} />
+          <h1 aria-label={"Product name: " + product.name}>{product.name}</h1>
+          <img src={product.image} alt={product.name} />
           <p>{product.description}</p>
           
           <BidForm product={product} />

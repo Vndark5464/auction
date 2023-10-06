@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 function Home() {
   return (
     <div className="home-page">
-      <h1>Welcome to our auction platform!</h1>
+      <h1 id="home-intro" role="heading">Welcome to our auction platform!</h1>
       <p>Join and bid on amazing products</p>
       
-      <Link to="/products" className="browse-btn">
+      <Link to="/products" className="browse-btn" aria-label="Browse available products">
         Browse Products
       </Link>
     </div>

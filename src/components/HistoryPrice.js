@@ -12,19 +12,18 @@ function HistoryPrice({ productId }) {
 
   return (
     <div className="history-price">
-      <h3>Price History</h3>
+      <h3 id="priceHistoryLabel">Price History</h3>
       
-      <div className="history-list">
-        {history.map(item => (
-          <div className="history-item">
-            <div>{item.bidPrice}</div> 
-            <div>{item.bidTime}</div>
+      <div role="list" aria-labelledby="priceHistoryLabel" className="history-list">
+        {history.map((item, index) => (
+          <div role="listitem" key={index} className="history-item">
+            <div aria-label="bid price">{item.bidPrice}</div> 
+            <div aria-label="bid time">{item.bidTime}</div>
           </div>
         ))}
       </div>
     </div>
-  );
-
+  )
 }
 
 export default HistoryPrice;

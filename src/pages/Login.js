@@ -10,8 +10,12 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input name="email" placeholder="Email" />
-      <input name="password" placeholder="Password" type="password" />
+      <label htmlFor="email">Email:</label>
+      <input name="email" id="email" placeholder="Email" aria-label="Email" />
+
+      <label htmlFor="password">Password:</label>
+      <input name="password" id="password" placeholder="Password" type="password" aria-label="Password" />
+
       <button type="submit">Login</button>  
     </form>
   );

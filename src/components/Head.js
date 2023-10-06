@@ -7,19 +7,19 @@ function Header() {
 
   return (
     <header>
-      <Link to="/">
-        <img src="/logo.png" />  
+      <Link to="/" aria-label="Home">
+        <img src="/logo.png" alt="Logo of {Your Website Name}" />  
       </Link>
       
-      <nav>
+      <nav aria-label="main navigation">
         <Link to="/products">Products</Link>
         <Link to="/about">About</Link>
       </nav>
 
-      <div className="auth-links"> 
+      <nav aria-label="authentication links">
         <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>  
-      </div>
+        <Link to="/register">Register</Link>
+      </nav>
     </header>
   )
 }
