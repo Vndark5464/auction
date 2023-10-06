@@ -20,3 +20,21 @@
 .blockcode {
     background-color:antiquewhite;
 }
+header {
+    position: fixed;
+    top: 0;
+    z-index: 100; /* Optional: This ensures the header always appears on top of other page elements */
+    background-color: white; /* Optional: Replace with the background color of your choice */
+    width: 100%;
+}
+body {
+    margin-top: 5%;
+}
+section{
+    margin-top: 6%;
+}
+  
+  #server-time-clock{
+    float: left;
+    margin-left: 20px;
+  }
