@@ -15,7 +15,7 @@ const ServerTimeClock = () => {
     };
   }, []);
 
-  const daysInVietnamese = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+  const daysInVietnamese = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   return (
     <div id="server-time-clock"
         aria-haspopup="true"
