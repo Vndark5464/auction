@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollButton from "./ScrollButton";
 
 function Body() {
     function goToPage2() {
@@ -23,6 +24,7 @@ function Body() {
                           opening a new chapter for the country's auction activities.
                         </p>
                         <button onClick={goToPage2} className="eg-btn btn--primary3 btn--lg wow fadeInUp" style={{visibility: 'visible', animationDuration: '2s', animationDelay: '0.8s'}} aria-label="Khám phá ABC Auction">Discover</button>
+                        <ScrollButton />
                     </div>
                 </div>
             </div>

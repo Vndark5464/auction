@@ -1,12 +1,37 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Header from '../components/Head';
 
 function Login() {
 
-  const handleSubmit = () => {
-    // Submit form
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', {
+        email: email,
+        password: password,
+      });
+
+      const user = response.data;
+
+      if(user.role === 'admin') {
+        navigate("/admin");
+      } else if (user.role === 'user') {
+        navigate("/");
+      }
+    } catch(err) {
+      console.log(err);
+    }
   }
+
 
   return (
     <>
@@ -20,13 +45,13 @@ function Login() {
                 <h3 className="mb-5">Sign in</h3>
 
                 <div className="form-outline mb-4">
-                  <input type="email" id="typeEmailX-2" className="form-control form-control-lg" />
-                  <label className="form-label" htmlFor="typeEmailX-2">Email</label>
+                  <input type="email" id="typeEmailX-2" className="form-control form-control-lg" onChange={(e) => setEmail(e.target.value)} required />
+                    <label className="form-label" htmlFor="typeEmailX-2">Email</label>
                 </div>
-      
+
                 <div className="form-outline mb-4">
-                  <input type="password" id="typePasswordX-2" className="form-control form-control-lg" />
-                  <label className="form-label" htmlFor="typePasswordX-2">Password</label>
+                  <input type="password" id="typePasswordX-2" className="form-control form-control-lg" onChange={(e) => setPassword(e.target.value)} required />
+                    <label className="form-label" htmlFor="typePasswordX-2">Password</label>
                 </div>
       
                 <div className="form-check d-flex justify-content-start mb-4">
