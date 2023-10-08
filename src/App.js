@@ -15,11 +15,13 @@ const App = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<Home data={data} />} />
-      <Route path="/login" element={<Login data={data} />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
+    <div>
+      <Routes>
+        <Route path="/" element={<Home data={data} />} />
+        <Route path="/login" element={<Login data={data} />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </div>
   );
 }
 

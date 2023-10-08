@@ -8,35 +8,31 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreedTerms, setAgreedTerms] = useState(false);
-  
+  const [errorMessage, setErrorMessage] = useState("");
+
   const register = event => {
-  
     // preventDefault is called to prevent a browser reload/refresh 
     event.preventDefault();
-    
     if(password !== confirmPassword){
-      alert('Passwords do not match!');
+      setErrorMessage("Passwords do not match!");
     } else if (!agreedTerms){
-      alert('Please agree terms!')
+      setErrorMessage("Please agree to terms!")
     } else {
-      axios.post('http://localhost:3001/register', // replace with your API endpoint
+      axios.post('http://localhost:3001/users', 
       {
          name: name,
          email: email,
          password: password,
       }).then( response => {
-        if ( typeof response.data !== 'undefined' ) {
-          if (response.data.status === 'success') {
-            localStorage.setItem('loggedInUser', email); // save logged in user in the local storage
-            alert('Registration Successful!');
-          } else {
-            alert('Error in Registration, try again later');
-          }
-        }  
+        if (response.data.status === 'success') {
+          localStorage.setItem('loggedInUser', email); 
+          setErrorMessage('Registration Successful!');
+        } else {
+          setErrorMessage('Error in Registration, try again later');
+        }
       });
     }
   };
-
   return (
     
     <section className="vh-100" >
@@ -51,6 +47,11 @@ const Register = () => {
                   <form onSubmit={register}>
                     <fieldset>
                       <legend className="mb-4">Register Information:</legend>
+                      <div aria-live="polite">
+                        {errorMessage && 
+                          <p style={{color: 'red'}}>{errorMessage}</p>
+                        }
+                      </div>
                        <div className="form-outline mb-4">
                           <label for="nameInput">Name</label>
                           <input 
