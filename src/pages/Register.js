@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Head';
+import axios from 'axios';
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [agreedTerms, setAgreedTerms] = useState(false);
+  
+  const register = event => {
+  
+    // preventDefault is called to prevent a browser reload/refresh 
+    event.preventDefault();
+    
+    if(password !== confirmPassword){
+      alert('Passwords do not match!');
+    } else if (!agreedTerms){
+      alert('Please agree terms!')
+    } else {
+      axios.post('http://localhost:3001/register', // replace with your API endpoint
+      {
+         name: name,
+         email: email,
+         password: password,
+      }).then( response => {
+        if ( typeof response.data !== 'undefined' ) {
+          if (response.data.status === 'success') {
+            localStorage.setItem('loggedInUser', email); // save logged in user in the local storage
+            alert('Registration Successful!');
+          } else {
+            alert('Error in Registration, try again later');
+          }
+        }  
+      });
+    }
+  };
+
   return (
     
     <section className="vh-100" >
@@ -13,33 +48,73 @@ const Register = () => {
               <div className="card" style={{borderRadius: '15px'}}>
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb-5">Create an account</h2>
-                  <form>
-                    <div className="form-outline mb-4">
-                      <input type="text" id="form3Example1cg" className="form-control form-control-lg" />
-                      <label className="form-label" htmlFor="form3Example1cg">Your Name</label>
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input type="email" id="form3Example3cg" className="form-control form-control-lg" />
-                      <label className="form-label" htmlFor="form3Example3cg">Your Email</label>
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input type="password" id="form3Example4cg" className="form-control form-control-lg" />
-                      <label className="form-label" htmlFor="form3Example4cg">Password</label>
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input type="password" id="form3Example4cdg" className="form-control form-control-lg" />
-                      <label className="form-label" htmlFor="form3Example4cdg">Repeat your password</label>
-                    </div>
-                    <div className="form-check d-flex justify-content-center mb-5">
-                      <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                      <label className="form-check-label" htmlFor="form2Example3cg">
-                        I agree all statements in <a href="#!" className="text-body"><u>Terms of service</u></a>
-                      </label>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                      <button type="button" className="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
-                    </div>
-                    <p className="text-center text-muted mt-5 mb-0">Have already an account? <a href="login" className="fw-bold text-body"><u>Login here</u></a></p>
+                  <form onSubmit={register}>
+                    <fieldset>
+                      <legend className="mb-4">Register Information:</legend>
+                       <div className="form-outline mb-4">
+                          <label for="nameInput">Name</label>
+                          <input 
+                            type="text" 
+                            id="nameInput" 
+                            className="form-control form-control-lg"
+                            onChange={(e) => setName(e.target.value)} 
+                            aria-label="Enter your name"
+                            required 
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label for="emailInput">Email</label>
+                          <input 
+                            type="email" 
+                            id="emailInput" 
+                            className="form-control form-control-lg" 
+                            onChange={(e) => setEmail(e.target.value)} 
+                            aria-label="Enter your email"
+                            required 
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label for="passwordInput">Password:</label>
+                          <input 
+                            type="password" 
+                            id="passwordInput" 
+                            className="form-control form-control-lg"
+                            onChange={(e) => setPassword(e.target.value)} 
+                            aria-label="Enter your password"
+                            required 
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label for="confirmPasswordInput">Re-enter your password</label>
+                          <input 
+                            type="password" 
+                            id="confirmPasswordInput" 
+                            className="form-control form-control-lg" 
+                            onChange={(e) => setConfirmPassword(e.target.value)} 
+                            aria-label="Enter your password again"
+                            required 
+                          />
+                        </div>
+                        <div className="form-check d-flex justify-content-center mb-5">
+                          <input 
+                            className="form-check-input me-2" 
+                            type="checkbox" 
+                            value="" 
+                            id="agreedTermsCheck"
+                            onChange={() => setAgreedTerms(!agreedTerms)} 
+                            aria-label="Agreement to terms of service"
+                            required 
+                          />
+                          <label for="agreedTermsCheck">I agree to all terms of service</label>
+                        </div>
+                        <div className="d-flex justify-content-center">
+                          <button 
+                            type="submit" 
+                            className="btn btn-success btn-block btn-lg"
+                            aria-label="Submit registration"
+                          >Register</button>
+                        </div>
+                    </fieldset>
                   </form>
                 </div>
               </div>
@@ -47,7 +122,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-      </section>
+    </section>
   );
 };
 

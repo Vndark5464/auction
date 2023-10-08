@@ -9,7 +9,7 @@ const App = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/users')
+    axios.get('http://localhost:5001/api/users')
       .then((response) => setData(response.data))
       .catch(err => console.log(err));
   }, []);

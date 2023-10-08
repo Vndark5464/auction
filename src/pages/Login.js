@@ -8,15 +8,14 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // New state for handling error messages
-
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post('http://localhost:5001/api/login', {
         email: email,
         password: password,
       });
@@ -29,7 +28,7 @@ function Login() {
         navigate("/");
       }
     } catch(err) {
-      setError(err.message); // Update the error message state when an error occurs
+      setError(`Login error: ${err.message}`);
     }
   }
 
@@ -47,30 +46,30 @@ function Login() {
                 <h3 className="mb-5">Sign in</h3>
 
                 <div className="form-outline mb-4">
-              <input 
-                type="email" 
-                id="typeEmailX-2" 
-                name="email"
-                className="form-control form-control-lg" 
-                onChange={(e) => setEmail(e.target.value)} 
-                aria-label="Enter your email"
-                autoComplete="email"
-                required 
-              />
+                <input 
+                  type="email" 
+                  id="typeEmailX-2" 
+                  name="email"
+                  className="form-control form-control-lg" 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  aria-label="Enter your email"
+                  autoComplete="email"
+                  required 
+      />
               <label className="form-label" htmlFor="typeEmailX-2">Email</label>
             </div>
 
             <div className="form-outline mb-4">
-              <input 
-                type="password" 
-                id="typePasswordX-2" 
-                name="password"
-                className="form-control form-control-lg" 
-                onChange={(e) => setPassword(e.target.value)} 
-                aria-label="Enter your password"
-                autoComplete="current-password"
-                required 
-              />
+            <input 
+              type="password" 
+              id="typePasswordX-2" 
+              name="password"
+              className="form-control form-control-lg" 
+              onChange={(e) => setPassword(e.target.value)} 
+              aria-label="Enter your password"
+              autoComplete="current-password"
+              required 
+      />
               <label className="form-label" htmlFor="typePasswordX-2">Password</label>
             </div>
                 <div className="form-check d-flex justify-content-start mb-4">
@@ -78,7 +77,7 @@ function Login() {
                   <label className="form-check-label" htmlFor="form1Example3"> Remember password </label>
                 </div>
       
-                <button className="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                <button className="btn btn-primary btn-lg btn-block" type="submit" aria-label="Log in">Login</button>
 
                 <Link to="/forgot-password" className="mb-3 d-block">Forgot your password?</Link>
                 <hr className="my-4" />
