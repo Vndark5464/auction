@@ -5,7 +5,7 @@ import ServerTimeClock from './ServerTimeClock';
 
 function Header() {
   return (
-    <header role="banner" className="p-3 bg-dark text-white">
+    <header id='head-head' role="banner" className="p-3 bg-dark text-white">
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
          <Link to="/" className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">

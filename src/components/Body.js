@@ -6,6 +6,7 @@ function Body() {
         
     }
     return(
+        <body id="body-body">
         <div className="hero-area hero-style-three">
         <img alt="Banner image" src="https://www.vietnamfineart.com.vn/wp-content/uploads/2023/03/hinh-anh-anime-buon_103502006.jpg" className="home3-banner img-fluid" style={{height: '550px', objectFit: 'contain', minWidth: '50%'}}/>
         <div className="container-lg container-fluid">
@@ -30,6 +31,7 @@ function Body() {
             </div>
         </div>
       </div>
+      </body>
     );
 }
 
