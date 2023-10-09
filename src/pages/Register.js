@@ -46,7 +46,6 @@ const Register = () => {
                   <h2 className="text-uppercase text-center mb-5">Create an account</h2>
                   <form onSubmit={register}>
                     <fieldset>
-                      <legend className="mb-4">Register Information:</legend>
                       <div aria-live="polite">
                         {errorMessage && 
                           <p style={{color: 'red'}}>{errorMessage}</p>
